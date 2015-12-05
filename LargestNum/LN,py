@@ -1,0 +1,39 @@
+list=[3,32,116544,512,1259]
+# STRING the list
+def str_list(list):
+    strlist=[]
+    for i in list:
+        i=str(i)
+        strlist.append(i)
+    return strlist
+
+# Make a dictionary whose values in same length.So we can make a comparation.
+
+def get_dic(strlist):
+    dic={}
+    length=len(str(max(list)))   #Make it all the same length(standard value).   
+    for value in strlist:
+        if len(value) <= length:
+            key=value+((value[-1])*(length-len(value)))
+            dic[key]=value  #Here,dic's key is the standard value, dic's value are regions.
+            continue
+        dic[value]=value
+    return dic
+
+# Make a comparation.
+def get_num(dic):
+    keys=dic.keys()
+    keys.sort(reverse=True)
+    num=''
+    for k in keys:
+        num += dic[k]
+    return num
+
+def main():
+    strlist=str_list(list)
+    dic=get_dic(strlist)
+    num=get_num(dic)
+    return num
+
+if __name__=='__main__':
+    num=main()
